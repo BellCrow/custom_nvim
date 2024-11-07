@@ -19,5 +19,4 @@ return {
 			vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 		end
 	},
-
 }
