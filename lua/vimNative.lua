@@ -6,10 +6,12 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes' 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
+vim.opt.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.opt.scrolloff = 7
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.opt.shiftwidth = 2
 
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- split window navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
@@ -28,3 +30,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank()
   end,
 })
+
+-- make saving and closing easier
+vim.keymap.set('n', '<Leader>w', ':w<CR>')
+vim.keymap.set('n', '<Leader>q', ':q<CR>')
+vim.keymap.set('n', '<Leader>x', ':x<CR>')
+
+vim.keymap.set('n', '<Leader>W', ':wa<CR>')
+vim.keymap.set('n', '<Leader>Q', ':qa<CR>')
+vim.keymap.set('n', '<Leader>X', ':xa<CR>')
