@@ -1,23 +1,8 @@
-local replaceNetrw = function ()
+require("utils")
+
+function ReplaceNetrw()
 	vim.g.loaded_netrw = 1
 	vim.g.loaded_netrwPlugin = 1
-	-- Initialize startup_dir to nil
-	local startup_dir = nil
-
-	-- Iterate over all command-line arguments to find the first directory
-	for _, arg in ipairs(vim.fn.argv()) do
-		if vim.fn.isdirectory(arg) == 1 then
-			startup_dir = arg
-			break
-		end
-	end
-
-	-- Use this directory with Neo-tree
-	source_selector = {
-		-- Set initial root to the directory we found
-		default_source = startup_dir,
-	}
-
 	-- TODO: add code here, that open neotree on startup
 	-- if the argument given is a folder.
 	-- Also make sure to copy update CWD from the other repo
@@ -26,48 +11,45 @@ local replaceNetrw = function ()
 	vim.api.nvim_create_autocmd("VimEnter", {
 		pattern = "*",
 		callback = function()
-			local from = vim.uv.cwd()
-			local target
-			local args = vim.fn.argv()
-			if type(args) ~= "table" then
-				return
+			local is_directory, absolute_path = IsSingleFolderLoaded()
+			if is_directory then
+				vim.cmd(string.format(":cd %s", absolute_path))
+				FocusNeoTree()
 			end
-
-			for _, arg in ipairs(type(args) == "table" and args or {}) do
-				if vim.fn.isdirectory(arg) then
-					target = vim.fn.fnamemodify(arg, ":p")
-					if target ~= nil and vim.fn.isdirectory(target) ~= 0 then
-						vim.cmd(string.format(":cd %s", target))
-					end
-				end
-			end
-			return true
 		end,
 	})
 end
 
-local hideNeoTree = function ()
+function HideNeoTree()
 	require("neo-tree.command").execute({ action = "close" })
 end
 
-local isNeoTreeWindowFocused = function ()
+function IsNeoTreeWindowFocused()
 	return vim.bo.filetype == "neo-tree"
 end
 
-local focusNeoTree = function ()
+function FocusNeoTree()
 	require("neo-tree.command").execute({ action = "focus" })
 end
 
-local toogleNeoTree = function ()
-	if isNeoTreeWindowFocused() then
-		hideNeoTree()
+function ToogleNeoTree()
+	if IsNeoTreeWindowFocused() then
+		HideNeoTree()
 	else
-		focusNeoTree()
+		FocusNeoTree()
 	end
 end
 
-local setupKeyMaps = function ()
-	vim.keymap.set("n", "\\", toogleNeoTree)
+function SetupNeoTreeKeyMaps()
+	vim.keymap.set("n", "\\", ToogleNeoTree)
+	require("neo-tree").setup({
+		window = {
+			mappings = {
+				["l"] = "open",
+				["h"] = "close_node",
+			},
+		},
+	})
 end
 
 return {
@@ -79,7 +61,7 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
-		setupKeyMaps()
-		replaceNetrw()
+		SetupNeoTreeKeyMaps()
+		ReplaceNetrw()
 	end,
 }

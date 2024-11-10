@@ -1,6 +1,6 @@
 return {
 	{
-		"williamboman/mason.nvim",
+		"wiliamboman/mason.nvim",
 		config = function()
 			require("mason").setup()
 		end,
@@ -15,8 +15,8 @@ return {
 		"neovim/nvim-lspconfig",
 		config = function()
 			local lspconfig = require("lspconfig")
-			lspconfig.lua_ls.setup({})
-			-- TODO: these are global bindinds at the moment.
+			lspconfig.lua_ls.setup({
+			})
 
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
@@ -75,4 +75,16 @@ return {
 			--]]
 		end,
 	},
+  {
+    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
+    -- used for completion, annotations and signatures of Neovim apis
+    'folke/lazydev.nvim',
+    ft = 'lua',
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = 'luvit-meta/library', words = { 'vim%.uv' } },
+      },
+    },
+  },
 }
