@@ -1,4 +1,4 @@
-function replaceNetrw()
+local replaceNetrw = function ()
 	vim.g.loaded_netrw = 1
 	vim.g.loaded_netrwPlugin = 1
 	-- Initialize startup_dir to nil
@@ -46,15 +46,19 @@ function replaceNetrw()
 	})
 end
 
-function setupKeyMaps()
-	vim.keymap.set("n", "\\", toogleNeoTree)
-end
-
-function hideNeoTree()
+local hideNeoTree = function ()
 	require("neo-tree.command").execute({ action = "close" })
 end
 
-function toogleNeoTree()
+local isNeoTreeWindowFocused = function ()
+	return vim.bo.filetype == "neo-tree"
+end
+
+local focusNeoTree = function ()
+	require("neo-tree.command").execute({ action = "focus" })
+end
+
+local toogleNeoTree = function ()
 	if isNeoTreeWindowFocused() then
 		hideNeoTree()
 	else
@@ -62,12 +66,8 @@ function toogleNeoTree()
 	end
 end
 
-function isNeoTreeWindowFocused()
-	return vim.bo.filetype == "neo-tree"
-end
-
-function focusNeoTree()
-	require("neo-tree.command").execute({ action = "focus" })
+local setupKeyMaps = function ()
+	vim.keymap.set("n", "\\", toogleNeoTree)
 end
 
 return {

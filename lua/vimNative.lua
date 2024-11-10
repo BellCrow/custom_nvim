@@ -7,7 +7,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
-vim.opt.listchars = {tab = "  ",  trail = "·", nbsp = "␣" }
+vim.opt.listchars = {tab = '» ',  trail = "·", nbsp = "␣" }
 vim.opt.scrolloff = 7
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2

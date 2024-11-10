@@ -17,12 +17,13 @@ return {
 			local lspconfig = require("lspconfig")
 			lspconfig.lua_ls.setup({})
 			-- TODO: these are global bindinds at the moment.
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
 
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
 				vim.keymap.set(mode, keys, func, { desc = "LSP: " .. desc })
 			end
+
+			map("K", vim.lsp.buf.hover, "Hover Hint")
 
 			-- Jump to the definition of the word under your cursor.
 			--  This is where a variable was first declared, or where a function is defined, etc.
