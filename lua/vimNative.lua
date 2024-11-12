@@ -7,7 +7,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
-vim.opt.listchars = {tab = '» ',  trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.scrolloff = 7
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
@@ -41,3 +41,18 @@ vim.keymap.set("n", "<Leader>x", ":x<CR>")
 vim.keymap.set("n", "<Leader>W", ":wa<CR>")
 vim.keymap.set("n", "<Leader>Q", ":qa<CR>")
 vim.keymap.set("n", "<Leader>X", ":xa<CR>")
+
+
+--experimental lol
+vim.api.nvim_create_user_command('SprichDeutsch',function()
+	vim.keymap.set("i", "ue", "ü")
+	vim.keymap.set("i", "UE", "Ü")
+
+	vim.keymap.set("i", "ae", "ä")
+	vim.keymap.set("i", "AE", "Ä")
+
+	vim.keymap.set("i", "oe", "ö")
+	vim.keymap.set("i", "OE", "Ö")
+
+	vim.keymap.set("i", "sz", "ß")
+end,{})
