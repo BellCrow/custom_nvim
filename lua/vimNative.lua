@@ -12,6 +12,8 @@ vim.opt.scrolloff = 7
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
+-- im old so i have to have vim wait for me :(
+vim.o.timeout = false
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- split window navigation
@@ -42,6 +44,9 @@ vim.keymap.set("n", "<Leader>W", ":wa<CR>")
 vim.keymap.set("n", "<Leader>Q", ":qa<CR>")
 vim.keymap.set("n", "<Leader>X", ":xa<CR>")
 
+
+-- make v->v select the current word
+vim.keymap.set("v", "v", "iw")
 
 --experimental lol
 vim.api.nvim_create_user_command('SprichDeutsch',function()
