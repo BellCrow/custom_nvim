@@ -35,18 +35,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- make saving and closing easier
-vim.keymap.set("n", "<Leader>w", ":w<CR>")
-vim.keymap.set("n", "<Leader>q", ":q<CR>")
-vim.keymap.set("n", "<Leader>x", ":x<CR>")
-
-vim.keymap.set("n", "<Leader>W", ":wa<CR>")
-vim.keymap.set("n", "<Leader>Q", ":qa<CR>")
-vim.keymap.set("n", "<Leader>X", ":xa<CR>")
-
-
 -- make v->v select the current word
 vim.keymap.set("v", "v", "iw")
+vim.keymap.set({ 'n', 'i' }, '<C-s>', '<ESC>:w<CR>')
 
 --experimental lol
 vim.api.nvim_create_user_command('SprichDeutsch',function()
