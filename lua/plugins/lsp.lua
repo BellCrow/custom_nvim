@@ -8,7 +8,9 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls" } })
+			require("mason-lspconfig").setup({
+				ensure_installed = { "lua_ls", "csharp_ls"} })
+
 		end,
 	},
 	{
@@ -21,6 +23,7 @@ return {
 				filetypes = {'python'},
 			})
 			lspconfig.texlab.setup({})
+			lspconfig.csharp_ls.setup({})
 
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
