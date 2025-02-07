@@ -14,6 +14,8 @@ vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
 -- im old so i have to have vim wait for me :(
 vim.o.timeout = false
+vim.o.wrap = false
+vim.o.cuc = true
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- split window navigation
