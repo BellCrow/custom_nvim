@@ -21,7 +21,6 @@ return {
 				filetypes = { "python" },
 			})
 			lspconfig.texlab.setup({})
-<<<<<<< HEAD
 			lspconfig.yamlls.setup({
 				settings = {
 					yaml = {
@@ -33,9 +32,7 @@ return {
 					},
 				},
 			})
-=======
 			lspconfig.csharp_ls.setup({})
->>>>>>> refs/remotes/origin/master
 
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
