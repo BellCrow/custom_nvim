@@ -8,7 +8,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls" } })
+			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls" , "csharp_ls"} })
 		end,
 	},
 	{
@@ -21,6 +21,7 @@ return {
 				filetypes = { "python" },
 			})
 			lspconfig.texlab.setup({})
+<<<<<<< HEAD
 			lspconfig.yamlls.setup({
 				settings = {
 					yaml = {
@@ -32,6 +33,9 @@ return {
 					},
 				},
 			})
+=======
+			lspconfig.csharp_ls.setup({})
+>>>>>>> refs/remotes/origin/master
 
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
