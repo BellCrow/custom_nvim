@@ -39,7 +39,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 -- make v->v select the current word
 vim.keymap.set("v", "v", "iw")
-vim.keymap.set({ 'n', 'i' }, '<C-s>', '<ESC>:w<CR>')
 
 --experimental lol
 vim.api.nvim_create_user_command('SprichDeutsch',function()
