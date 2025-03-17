@@ -40,6 +40,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 -- make v->v select the current word
 vim.keymap.set("v", "v", "iw")
 
+-- make yank more smorter
+vim.keymap.set("n", "<leader>y", "\"+y")
+vim.keymap.set("v", "<leader>y", "\"+y")
 --experimental lol
 vim.api.nvim_create_user_command('SprichDeutsch',function()
 	vim.keymap.set("i", "ue", "ü")

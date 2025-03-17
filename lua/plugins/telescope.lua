@@ -15,7 +15,7 @@ return {
 
 		vim.keymap.set("n", "<leader><leader>", function()
 			require("telescope.builtin").buffers(
-				{ previewer = false, },
+				{ previewer = false, initial_mode = "normal" },
 				{ desc = "[ ] Find existing buffers" }
 			)
 		end)
