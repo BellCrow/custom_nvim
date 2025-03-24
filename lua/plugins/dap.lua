@@ -13,6 +13,7 @@ return {
 		vim.keymap.set('n', '<leader>dd', dap.step_over, {})
 		vim.keymap.set('n', '<leader>di', dap.step_into, {})
 		vim.keymap.set('n', '<leader>do', dap.step_out, {})
-		vim.keymap.set('n', '<leader>ds', dap.close, {})
+		vim.keymap.set('n', '<leader>dC', dap.terminate, {})
+		vim.keymap.set('n', '<leader>dt', dap.run_to_cursor, {})
 	end,
 }
