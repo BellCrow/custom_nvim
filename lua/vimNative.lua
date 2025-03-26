@@ -15,7 +15,6 @@ vim.opt.tabstop = 2
 -- im old so i have to have vim wait for me :(
 vim.o.timeout = false
 vim.o.wrap = false
-vim.o.cuc = true
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- split window navigation
@@ -25,7 +24,7 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
 -- make half page scrolling always have
--- cursor in the middel of the page if possible
+-- cursor in the middle of the page if possible
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Move half page up and center view around cursor" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Move half page down and center view around cursor" })
 
