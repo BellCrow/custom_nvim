@@ -8,7 +8,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls" } })
+			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls", "gopls"} })
 		end,
 	},
 	{
@@ -32,6 +32,7 @@ return {
 				},
 			})
 			lspconfig.csharp_ls.setup({})
+			lspconfig.gopls.setup({})
 
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
