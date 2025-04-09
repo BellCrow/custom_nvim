@@ -33,8 +33,6 @@ return {
 			})
 			lspconfig.csharp_ls.setup({})
 			lspconfig.gopls.setup({})
-
-			vim.o.winborder = 'single'
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
 				vim.keymap.set(mode, keys, func, { desc = "LSP: " .. desc })
