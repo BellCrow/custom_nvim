@@ -32,7 +32,9 @@ return {
 				},
 			})
 			lspconfig.csharp_ls.setup({})
+			lspconfig.gopls.setup({})
 
+			vim.o.winborder = 'single'
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
 				vim.keymap.set(mode, keys, func, { desc = "LSP: " .. desc })
@@ -99,6 +101,7 @@ return {
 			library = {
 				-- Load luvit types when the `vim.uv` word is found
 				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				{ path = "~/repos/personal/noita_spell_sorter/api_documentation/noita_lua_ls_documentation.lua", words = { "noita" } },
 			},
 		},
 	},
