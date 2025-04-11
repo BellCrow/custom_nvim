@@ -8,7 +8,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls"} })
+			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls", "gopls" } })
 		end,
 	},
 	{
@@ -26,12 +26,11 @@ return {
 					yaml = {
 						schemas = {
 							-- makes sure to always use the kubernetes schmema if the file names end with ".k8s.yaml"
-							kubernetes = "/*.k8s.yaml"
+							kubernetes = "/*.k8s.yaml",
 						},
 					},
 				},
 			})
-
 			local pid = vim.fn.getpid()
 			-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
 			local omnisharp_bin = "C:\\Users\\jkrieger\\tools\\omnisharp\\OmniSharp.exe"
@@ -40,13 +39,16 @@ return {
 			--
 			lspconfig.omnisharp.setup({ cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) } })
 
+			lspconfig.gopls.setup({})
 
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
 				vim.keymap.set(mode, keys, func, { desc = "LSP: " .. desc })
 			end
 
-			map("K", vim.lsp.buf.hover, "Hover Hint")
+			map("K", function()
+				vim.lsp.buf.hover({ border = "rounded" })
+			end, "Hover Hint")
 
 			-- Jump to the definition of the word under your cursor.
 			--  This is where a variable was first declared, or where a function is defined, etc.
@@ -107,6 +109,10 @@ return {
 			library = {
 				-- Load luvit types when the `vim.uv` word is found
 				{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				{
+					path = "~/repos/personal/noita_spell_sorter/api_documentation/noita_lua_ls_documentation.lua",
+					words = { "noita" },
+				},
 			},
 		},
 	},

@@ -3,10 +3,6 @@ require("utils")
 function ReplaceNetrw()
 	vim.g.loaded_netrw = 1
 	vim.g.loaded_netrwPlugin = 1
-	-- TODO: add code here, that open neotree on startup
-	-- if the argument given is a folder.
-	-- Also make sure to copy update CWD from the other repo
-	-- if vim was called with an argument specifying a directory, make that directory the CWD
 	-- taken from: https://www.reddit.com/r/neovim/comments/1du176f/how_to_align_cwd_with_opened_folder/
 	vim.api.nvim_create_autocmd("VimEnter", {
 		pattern = "*",
@@ -49,6 +45,7 @@ function SetupNeoTreeKeyMaps()
 				["h"] = "close_node",
 			},
 		},
+		popup_border_style = "rounded"
 	})
 end
 

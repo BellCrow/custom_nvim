@@ -12,6 +12,7 @@ vim.opt.scrolloff = 7
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
+vim.o.winborder = 'none'
 -- im old so i have to have vim wait for me :(
 vim.o.timeout = false
 vim.o.wrap = false
