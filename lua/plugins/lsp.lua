@@ -8,7 +8,7 @@ return {
 	{
 		"williamboman/mason-lspconfig.nvim",
 		config = function()
-			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls" } })
+			require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "yamlls"} })
 		end,
 	},
 	{
@@ -31,7 +31,15 @@ return {
 					},
 				},
 			})
-			lspconfig.csharp_ls.setup({})
+
+			local pid = vim.fn.getpid()
+			-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+			local omnisharp_bin = "C:\\Users\\jkrieger\\tools\\omnisharp\\OmniSharp.exe"
+			--local omnisharp_bin = "omnisharp"
+			-- on Windows
+			--
+			lspconfig.omnisharp.setup({ cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) } })
+
 
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
