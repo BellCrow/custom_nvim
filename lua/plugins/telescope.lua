@@ -19,5 +19,10 @@ return {
 				{ desc = "[ ] Find existing buffers" }
 			)
 		end)
+		require('telescope').setup({
+			defaults = {
+				layout_strategy = 'vertical'
+			}
+		})
 	end,
 }
