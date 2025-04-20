@@ -31,7 +31,14 @@ return {
 					},
 				},
 			})
-			lspconfig.csharp_ls.setup({})
+			local pid = vim.fn.getpid()
+			-- On linux/darwin if using a release build, otherwise under scripts/OmniSharp(.Core)(.cmd)
+			local omnisharp_bin = "C:\\Users\\jkrieger\\tools\\omnisharp\\OmniSharp.exe"
+			--local omnisharp_bin = "omnisharp"
+			-- on Windows
+			--
+			lspconfig.omnisharp.setup({ cmd = { omnisharp_bin, "--languageserver", "--hostPID", tostring(pid) } })
+
 			lspconfig.gopls.setup({})
 			lspconfig.jdtls.setup({})
 			local map = function(keys, func, desc, mode)
