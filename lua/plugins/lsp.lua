@@ -33,6 +33,7 @@ return {
 			})
 			lspconfig.csharp_ls.setup({})
 			lspconfig.gopls.setup({})
+			lspconfig.jdtls.setup({})
 			local map = function(keys, func, desc, mode)
 				mode = mode or "n"
 				vim.keymap.set(mode, keys, func, { desc = "LSP: " .. desc })
