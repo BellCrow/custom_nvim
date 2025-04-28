@@ -16,6 +16,7 @@ vim.o.winborder = 'none'
 -- im old so i have to have vim wait for me :(
 vim.o.timeout = false
 vim.o.wrap = false
+vim.o.laststatus = 3
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- split window navigation
