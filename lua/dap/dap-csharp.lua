@@ -1,3 +1,7 @@
+if not vim.fn.has("win32") then
+	return
+end
+
 return {
 	"NicholasMata/nvim-dap-cs",
 	config = function()
