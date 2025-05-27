@@ -12,6 +12,7 @@ return {
 		vim.keymap.set("n", "<leader>fd", builtin.diagnostics, { desc = "Search Diagnostics" })
 		vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "Search Resume" })
 		vim.keymap.set("n", "<leader>f.", builtin.oldfiles, { desc = 'Search Recent Files ("." for repeat)' })
+		vim.keymap.set("n", "<leader>fb", builtin.current_buffer_fuzzy_find, { desc = 'Search Recent Files ("." for repeat)' })
 
 		vim.keymap.set("n", "<leader><leader>", function()
 			require("telescope.builtin").buffers(

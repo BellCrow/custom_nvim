@@ -28,7 +28,7 @@ function FocusNeoTree()
 	require("neo-tree.command").execute({ action = "focus" })
 end
 
-function ToogleNeoTree()
+function ToggleNeoTree()
 	if IsNeoTreeWindowFocused() then
 		HideNeoTree()
 	else
@@ -37,7 +37,7 @@ function ToogleNeoTree()
 end
 
 function SetupNeoTreeKeyMaps()
-	vim.keymap.set("n", "\\", ToogleNeoTree)
+	vim.keymap.set("n", "\\", ToggleNeoTree)
 	require("neo-tree").setup({
 		window = {
 			mappings = {
@@ -45,8 +45,12 @@ function SetupNeoTreeKeyMaps()
 				["h"] = "close_node",
 			},
 		},
-		popup_border_style = "rounded"
+		popup_border_style = "rounded",
 	})
+end
+
+local function RegisterKeybinds()
+	vim.keymap.set( "n", "<leader>nr", ":Neotree reveal<CR>", { desc = "Reveals the file for the current buffer in neotree" })
 end
 
 return {
@@ -60,5 +64,6 @@ return {
 	config = function()
 		SetupNeoTreeKeyMaps()
 		ReplaceNetrw()
+		RegisterKeybinds()
 	end,
 }
