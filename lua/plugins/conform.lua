@@ -4,13 +4,21 @@ return {
 		notify_on_error = false,
 		formatters_by_ft = {
 			lua = { "stylua" },
-			-- Conform can also run multiple formatters sequentially
-			python = { "black" },
-			--
-			-- You can use 'stop_after_first' to run the first available formatter from the list
-			-- javascript = { "prettierd", "prettier", stop_after_first = true },
+			python = { "autopep8" },
+		},
+		formatters = {
+			mine = {
+				command = "myTestRustFormatter",
+				args = {},
+				stdin = true,
+				condition = function(self, ctx)
+					-- TODO: add here to only let csharpier run on windows
+					return false
+				end,
+			},
 		},
 	},
+
 	keys = {
 		{
 			"<leader>ec",
