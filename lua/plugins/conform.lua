@@ -5,6 +5,7 @@ return {
 		formatters_by_ft = {
 			lua = { "stylua" },
 			python = { "autopep8" },
+			rust = { "rustfmt" },
 		},
 		formatters = {
 			mine = {

@@ -21,6 +21,7 @@ require("lazy").setup(
 		{import = "lsp.plugins"},
 		{import = "dap"},
 		{import = "mini"},
+		{import = "snippets"},
 	})
 
 -- these needs to be inluded after everything
