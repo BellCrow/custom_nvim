@@ -7,12 +7,14 @@ vim.opt.signcolumn = "yes"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.list = true
-vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars = { tab = "  ", trail = " ", nbsp = " " }
 vim.opt.scrolloff = 7
 vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.tabstop = 2
-vim.o.winborder = 'none'
+vim.o.winborder = "none"
+vim.o.cursorline = true
+
 -- im old so i have to have vim wait for me :(
 vim.o.timeout = false
 vim.o.wrap = false
@@ -42,10 +44,10 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.keymap.set("v", "v", "iw")
 
 -- make yank more smorter
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
+vim.keymap.set("n", "<leader>y", '"+y')
+vim.keymap.set("v", "<leader>y", '"+y')
 --experimental lol
-vim.api.nvim_create_user_command('SprichDeutsch',function()
+vim.api.nvim_create_user_command("SprichDeutsch", function()
 	vim.keymap.set("i", "ue", "ü")
 	vim.keymap.set("i", "UE", "Ü")
 
@@ -56,4 +58,16 @@ vim.api.nvim_create_user_command('SprichDeutsch',function()
 	vim.keymap.set("i", "OE", "Ö")
 
 	vim.keymap.set("i", "sz", "ß")
-end,{})
+end, {})
+
+local white_space_visible = false
+vim.api.nvim_create_user_command("ToggleWs", function()
+	if not white_space_visible then
+		vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
+		white_space_visible = true
+	else
+
+		vim.opt.listchars = {  tab = "  ", trail = " ", nbsp = " "}
+		white_space_visible = false
+	end
+end, {})

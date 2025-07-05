@@ -7,17 +7,17 @@ return {
 			python = { "autopep8" },
 			rust = { "rustfmt" },
 		},
-		formatters = {
-			mine = {
-				command = "myTestRustFormatter",
-				args = {},
-				stdin = true,
-				condition = function(self, ctx)
-					-- TODO: add here to only let csharpier run on windows
-					return false
-				end,
-			},
-		},
+		-- formatters = {
+		-- 	mine = {
+		-- 		command = "myTestRustFormatter",
+		-- 		args = {},
+		-- 		stdin = true,
+		-- 		condition = function(self, ctx)
+		-- 			-- TODO: add here to only let csharpier run on windows
+		-- 			return false
+		-- 		end,
+		-- 	},
+		-- },
 	},
 
 	keys = {

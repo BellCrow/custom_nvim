@@ -10,5 +10,6 @@ return {
 		})
 		require("snippets.snippets.kubernetes")
 		require("snippets.snippets.lua")
+		require("snippets.snippets.python")
 	end,
 }

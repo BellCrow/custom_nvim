@@ -15,14 +15,13 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 	end
 end
 vim.opt.rtp:prepend(lazypath)
-require("lazy").setup(
-	{
-		{import = "plugins"},
-		{import = "lsp.plugins"},
-		{import = "dap"},
-		{import = "mini"},
-		{import = "snippets"},
-	})
+require("lazy").setup({
+	{ import = "plugins" },
+	{ import = "lsp.plugins" },
+	{ import = "dap" },
+	{ import = "mini" },
+	{ import = "snippets" },
+})
 
 -- these needs to be inluded after everything
 -- is initialized, as it requieres a bunch of plugins
