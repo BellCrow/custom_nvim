@@ -36,21 +36,38 @@ function ToggleNeoTree()
 	end
 end
 
-function SetupNeoTreeKeyMaps()
+function SetupNeoTreeKeyMaps(configMap)
 	vim.keymap.set("n", "\\", ToggleNeoTree)
-	require("neo-tree").setup({
-		window = {
-			mappings = {
-				["l"] = "open",
-				["h"] = "close_node",
-			},
+	configMap.window = {
+		mappings = {
+			["l"] = "open",
+			["h"] = "close_node",
 		},
-		popup_border_style = "rounded",
-	})
+	}
+	configMap.popup_border_style = "rounded"
 end
 
 local function RegisterKeybinds()
-	vim.keymap.set( "n", "<leader>nr", ":Neotree reveal<CR>", { desc = "Reveals the file for the current buffer in neotree" })
+	vim.keymap.set(
+		"n",
+		"<leader>nr",
+		":Neotree reveal<CR>",
+		{ desc = "Reveals the file for the current buffer in neotree" }
+	)
+end
+
+local function SelectSources(configMap)
+	-- i removed the git status i dont need it
+	-- i removed the buffer source, as im using telescope for that
+	configMap.source_selector = {
+		sources = {
+			{
+				source = "filesystem",
+				display_name = " 󰉓 Files ",
+			},
+		},
+		truncation_character = "...",
+	}
 end
 
 return {
@@ -62,8 +79,11 @@ return {
 		"MunifTanjim/nui.nvim",
 	},
 	config = function()
-		SetupNeoTreeKeyMaps()
+		local configMap = {}
+		SetupNeoTreeKeyMaps(configMap)
 		ReplaceNetrw()
 		RegisterKeybinds()
+		SelectSources(configMap)
+		require("neo-tree").setup(configMap)
 	end,
 }
